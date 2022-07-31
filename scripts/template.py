@@ -24,7 +24,7 @@ SPACE = " "
 TAB = "\t"
 SPACES_PER_TAB = 4
 UNIVERSAL_SCOPE = "*"
-ROOT_TOPIC = "python"
+ROOT_TOPIC = "worldbuilding"
 IDENTIFIER = 0
 NAME = 1
 INSTANCE_OF = 2
@@ -53,7 +53,7 @@ def normalize_topic_name(topic_identifier):
 
 def create_tree():
     script_dir = os.path.dirname(__file__)
-    data_file = "template.dat"  # Sample template
+    data_file = "/home/brettk/Source/structured-knowledge/knowledge-graph-experiments/data/worldbuilding.dat"  # Worldbuilding template
     abs_file_path = os.path.join(script_dir, data_file)
     topics_file = open(abs_file_path, "r")
     stack = {}
@@ -211,9 +211,9 @@ def create_associations(store):
 
 # ================================================================================
 if __name__ == "__main__":
-    store = TopicStore("template.db")
+    store = TopicStore("worldbuilding.db")
     store.create_database()
-    store.create_map(USER_IDENTIFIER_1, "Test Map", "A map for testing purposes.")
+    store.create_map(USER_IDENTIFIER_1, "Worldbuilding Map", "A map for worldbuilding purposes.")
     store.populate_map(MAP_IDENTIFIER, USER_IDENTIFIER_1)
 
     tree = Tree()
