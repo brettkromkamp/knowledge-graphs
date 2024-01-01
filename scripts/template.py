@@ -9,12 +9,12 @@ import os
 from datetime import datetime
 
 from slugify import slugify
-from topicdb.core.models.association import Association
-from topicdb.core.models.attribute import Attribute
-from topicdb.core.models.datatype import DataType
-from topicdb.core.models.occurrence import Occurrence
-from topicdb.core.models.topic import Topic
-from topicdb.core.store.topicstore import TopicStore
+from topicdb.models.association import Association
+from topicdb.models.attribute import Attribute
+from topicdb.models.datatype import DataType
+from topicdb.models.occurrence import Occurrence
+from topicdb.models.topic import Topic
+from topicdb.store.topicstore import TopicStore
 from typedtree.traversalmode import TraversalMode
 from typedtree.tree import Tree
 
@@ -52,10 +52,13 @@ def normalize_topic_name(topic_identifier):
 
 
 def create_tree():
+
+    # TODO: Refactor
     script_dir = os.path.dirname(__file__)
-    data_file = "/home/brettk/Source/structured-knowledge/knowledge-graph-experiments/data/worldbuilding.dat"  # Worldbuilding template
+    data_file = "/home/brettk/Source/structured-knowledge/knowledge-graph-experiments/data/worldbuilding.txt"  # Worldbuilding template
     abs_file_path = os.path.join(script_dir, data_file)
     topics_file = open(abs_file_path, "r")
+
     stack = {}
     for line in topics_file:
         normalized_tags = None
@@ -211,7 +214,7 @@ def create_associations(store):
 
 # ================================================================================
 if __name__ == "__main__":
-    store = TopicStore("worldbuilding.db")
+    store = TopicStore("worldbuilding.sqlite")
     store.create_database()
     store.create_map(USER_IDENTIFIER_1, "Worldbuilding Map", "A map for worldbuilding purposes.")
     store.populate_map(MAP_IDENTIFIER, USER_IDENTIFIER_1)

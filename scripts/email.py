@@ -9,14 +9,14 @@ from datetime import datetime
 
 import pypff
 from slugify import slugify
-from topicdb.core.models.association import Association
-from topicdb.core.models.attribute import Attribute
-from topicdb.core.models.datatype import DataType
-from topicdb.core.models.occurrence import Occurrence
-from topicdb.core.models.topic import Topic
-from topicdb.core.store.ontologymode import OntologyMode
-from topicdb.core.store.topicstore import TopicStore
-from topicdb.core.topicdberror import TopicDbError
+from topicdb.models.association import Association
+from topicdb.models.attribute import Attribute
+from topicdb.models.datatype import DataType
+from topicdb.models.occurrence import Occurrence
+from topicdb.models.topic import Topic
+from topicdb.store.ontologymode import OntologyMode
+from topicdb.store.topicstore import TopicStore
+from topicdb.topicdberror import TopicDbError
 
 MAP_IDENTIFIER = 1
 USER_IDENTIFIER_1 = 1
@@ -208,7 +208,7 @@ def process_message(message, folder):
 
 
 def main() -> None:
-    store = TopicStore("bandeja-de-entrada.db")
+    store = TopicStore("email.sqlite")
     store.create_database()
     store.create_map(USER_IDENTIFIER_1, "Email ETL", "A map resulting from an email ETL operation.")
     store.populate_map(MAP_IDENTIFIER, USER_IDENTIFIER_1)
