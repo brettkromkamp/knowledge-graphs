@@ -1,21 +1,9 @@
-from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
-from gremlin_python.process.graph_traversal import GraphTraversalSource, __
-from gremlin_python.process.traversal import (
-    Barrier,
-    Bindings,
-    Cardinality,
-    Column,
-    Direction,
-    Operator,
-    Order,
-    P,
-    Pop,
-    Scope,
-    T,
-    WithOptions,
-)
-from gremlin_python.process.anonymous_traversal import traversal
 from typing import Optional
+
+from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+from gremlin_python.process.anonymous_traversal import traversal
+from gremlin_python.process.graph_traversal import GraphTraversalSource, __
+from gremlin_python.process.traversal import T
 
 # Support gremlin event loop in JupyterLab
 # import nest_asyncio
