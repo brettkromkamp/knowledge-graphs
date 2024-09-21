@@ -39,9 +39,9 @@ def load_edges(csv_file):
 
 # Bulk load vertices and edges
 print("Bulk loading vertices...")
-load_vertices("vertices.csv")
+load_vertices("../data/vertices.csv")
 print("Bulk loading edges...")
-load_edges("edges.csv")
+load_edges("../data/edges.csv")
 
 # Close the connection
 print("Closing the connection!")
