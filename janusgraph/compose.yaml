@@ -1,0 +1,19 @@
+# docker compose up -d
+# https://hub.docker.com/r/janusgraph/janusgraph
+
+services:
+  janusgraph:
+    image: janusgraph/janusgraph:latest
+    container_name: janusgraph
+    restart: always
+    platform: linux/x86_64
+    ports:
+      - "8182:8182" # Gremlin Server port
+    user: "1000:999"
+    volumes:
+      - ./config:/etc/opt/janusgraph
+      - janusgraph-data:/var/lib/janusgraph:rw
+
+# Named volume to maintain database data between restarts
+volumes:
+  janusgraph-data:
