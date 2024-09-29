@@ -9,17 +9,17 @@ services:
   #     - gremlin-server
   #   command: "-i conf/remote.groovy"
   #   volumes:
-  #     - ./gremlin-console/conf:/opt/gremlin-console/conf:r
+  #     - ./gremlin-console/conf:/opt/gremlin-console/conf
 
   gremlin-server:
     image: tinkerpop/gremlin-server:latest
     restart: always
     platform: linux/x86_64
-    user: "1000:1000"
+    user: "1000:999"
     ports:
       - "8182:8182"
     volumes:
-      - ./gremlin-server/conf:/opt/gremlin-server/conf:ro
+      - ./gremlin-server/conf:/opt/gremlin-server/conf
       - graph-data:/opt/gremlin-server/data:rw
 
 volumes:
