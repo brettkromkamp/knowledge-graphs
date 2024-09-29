@@ -1,0 +1,13 @@
+services:
+  fuseki:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fuseki
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./logs:/fuseki/logs
+      - ./databases:/fuseki/databases
+
+# volumes:

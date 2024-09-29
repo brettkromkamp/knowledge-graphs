@@ -58,4 +58,6 @@ networks:
   jce-network:
 volumes:
   cassandra:
+    external: true
   elasticsearch:
+    external: true
