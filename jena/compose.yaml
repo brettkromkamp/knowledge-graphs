@@ -1,13 +1,18 @@
 services:
   fuseki:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: fuseki
+    image: stain/jena-fuseki
+    container_name: jena-fuseki
     ports:
       - "3030:3030"
     volumes:
-      - ./logs:/fuseki/logs
-      - ./databases:/fuseki/databases
+      - ./fuseki/config:/fuseki/config # Mount your custom config.ttl
+      - ./fuseki/tdb2:/fuseki/databases/tdb2:rw # Mount volume for TDB2 data storage
+    environment:
+      - ADMIN_PASSWORD=Jyse03tvlW # Optional: Set an admin password
+    user: "0:0" # Run as root to avoid permission issues (optional)
+    command: "/jena-fuseki/fuseki-server --config=/fuseki/config/config.ttl"
+    restart: always
 
-# volumes:
+volumes:
+  fuseki-data:
+    driver: local
